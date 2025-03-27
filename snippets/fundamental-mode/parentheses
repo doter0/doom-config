@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: parentheses
+# key: ;p
+# condition: 'auto
+# --
+($1) $0

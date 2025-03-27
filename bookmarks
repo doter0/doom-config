@@ -1,0 +1,29 @@
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("org-capture-last-stored"
+ (filename . "~/wiki/100-Notes/Journal/2025-03.org")
+ (front-context-string)
+ (rear-context-string . "25-03-22 (Sat)\n\n")
+ (position . 21)
+ (last-modified 26590 28304 459126 650000))
+("org-refile-last-stored"
+ (filename . "~/Org/GTD/org-gtd-tasks.org")
+ (front-context-string . "** NEXT Translat")
+ (rear-context-string . "이렇게 하는 것이 좋겠다.\n\n")
+ (position . 191)
+ (last-modified 26490 21919 989082 462000))
+("config"
+ (filename . "~/.dotfiles/Config/.config/doom/config.org")
+ (front-context-string . "\n\n* Basic\n#+begi")
+ (rear-context-string . "om Emacs confi.\n")
+ (position . 130)
+ (last-modified 26474 38898 909194 581000))
+("test"
+ (filename . "~/.dotfiles/Config/.config/doom/config.org")
+ (front-context-string . "       :desc \"De")
+ (rear-context-string . " #'bookmark-set\n")
+ (position . 1552)
+ (last-modified 26474 33423 100963 398000))
+)

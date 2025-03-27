@@ -1,0 +1,28 @@
+* Doom Emacs config
+
+
+* Insatllation
+
+
+*** Arch Linux
+#+BEGIN_SRC shell
+sudo pacman -S emacs
+#+END_SRC
+
+
+*** Windows
+
+*** MacOS
+
+**
+
+#+BEGIN_SRC shell
+# Clone Doom Emacs
+rm -r ~/.emacs.d
+git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.config/emacs
+
+# Clone config
+git clone https://github.com/ztlevi/doom-config ~/.config/doom
+
+~/.config/emacs/bin/doom install
+#+END_SRC

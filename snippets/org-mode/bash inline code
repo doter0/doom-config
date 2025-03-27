@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: bash inline code
+# key: ;bc
+# condition: 'auto
+# --
+#+src_begin bash
+$0
+#+src_end

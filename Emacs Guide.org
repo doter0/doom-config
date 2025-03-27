@@ -1,0 +1,305 @@
+#+title: Emacs 설명
+
+
+* Bookmarks and Buffers
+
+Doom Emacs uses 'SPC b' for keybidings related to bookmarks and buffers.
+
+** Bookmarks
+Bookmark 기능은 특정 파일, 위치, 또는 URL을 저장하고, 나중에 빠르게 해당 위치로 이동할 수 있게 한다.
+
+| DESCRIPTION            | KEYBIDING |
+|------------------------+-----------|
+| List bookmakrs         | SPC b l   |
+| Set bookmark           | SPC b m   |
+| Jump to the bookmark   | SPC b g   |
+| Delete bookmark        | SPC b M   |
+| Save bookmarks to file | SPC b w   |
+
+| DESCRIPTION            | KEYBINDING |
+|------------------------+------------|
+| /Launch ibuffer/       | SPC b i    |
+| /Kill current buffer/  | SPC b k    |
+| /Goto next buffer/     | SPC b n    |
+| /Goto previous buffer/ | SPC b p    |
+| /Save current buffer/  | SPC b s    |
+
+| COMMAND                           | DESCRIPTION                            | KEYBINDING |
+|-----------------------------------+----------------------------------------+------------|
+| ibuffer-mark-forward              | /Mark the buffer/                        | m          |
+| ibuffer-unmark-forward            | /Unmark the buffer/                      | u          |
+| ibuffer-do-kill-on-deletion-marks | /Kill the marked buffers/                | x          |
+| ibuffer-filter-by-content         | /Ibuffer filter by content/              | f c        |
+| ibuffer-filter-by-directory       | /Ibuffer filter by directory/            | f d        |
+| ibuffer-filter-by-filename        | /Ibuffer filter by filename (full path)/ | f f        |
+| ibuffer-filter-by-mode            | /Ibuffer filter by mode/                 | f m        |
+| ibuffer-filter-by-name            | /Ibuffer filter by name/                 | f n        |
+| ibuffer-filter-disable            | /Disable ibuffer filter/                 | f x        |
+| ibuffer-do-kill-lines             | /Hide marked buffers/                    | g h        |
+| ibuffer-update                    | /Restore hidden buffers/                 | g H        |
+
+* Autocompletion
+
+
+
+* Org Mode
+
+** Org Syntax
+
+
+
+| DESCRIPTION               | KEYBIDING      |
+|---------------------------+----------------|
+| Navigate between elements | gj, gk         |
+| Select an element         | vae            |
+
+** Line Prefix
+Line Prefix로 파일의 전역 설정이나 특수 지시문(directives)를 설정할 수 있다. 이를 통해 Org Mode 문서의 동작을 제어하거나 특정 기능을 활성화하는 데 사용된다.
+설정 지시문은 다음과 같은 기본 구조를 가진다:
+'#+KEYWORD: VALUE'.
+
+
+** Headings
+/heading/
+
+| DESCRIPTION           | KEYBIDING |
+|-----------------------+-----------|
+| Insert heading        | C-RET     |
+| fold/unfold headings  | TAB       |
+| promote a hedings     | M-h, <<   |
+| demote a heading      | M-l, >>   |
+| Move subtree up, down | M-k, M-j  |
+| Select a subtree      | vaR       |
+|                       |           |
+
+
+** Lists
+/Unordered list/ start with '-', '+'
+/Ordered list/ start with '1.', '1)'
+/Description list/ contain the separator '::' to distinguish the description term from the description.
+
+| DESCRIPTION       | KEYBIDING |
+|-------------------+-----------|
+| Fold/unfold items | TAB       |
+| Insert item       | C-RET     |
+|                   |           |
+|                   |           |
+|                   |           |
+|                   |           |
+
+
+
+
+** Todo
+- /Priorities/
+  Prioritizing can be done by placing a priority cookie into the headline of a TODO item right after the TODO keyword.
+  By default, Org mode supports three prioritie. 'A', 'B', and 'C'. Priorities make a difference only for sorting in the agenda.
+- /Subtasks/
+  Creating an outline tree below a TODO item. to manage subtasks. TO keep an overview of the fraction of subtasks that have already been marked as done, insert either '[0/0]' or '[0%]' in the headline. TODO가 아닌 headline에도 적용할 수 있다. These cookies are updated each time the TODO status of a child changes, ro when pressing 'C-c C-c' on the cookie.
+- /Checkboxes/
+  Checkboxes are not included into the global TODO list. Checkboxes can also use cookie to keep an overview of subtasks. A checkbox can be in one of the three states, '[ ]', '[-]' and '[X]'.
+  Checkboxes work hierarchically, so if a check box item has children that are checkboxes, toggling one of the children checkboxes makes the parent checkbox reflect if none, some, or all fo the children are checked.
+
+
+| DESCRIPTION                    | KEYBIDING    |
+|--------------------------------+--------------|
+|                                |              |
+| Increase/decrease the priority | S-UP, S-DOWN |
+| Update information of subtasks | C-c C-c      |
+|                                |              |
+| Insert checkbox                | C-RET        |
+| Toggle checkbox status         | C-c C-c, RET |
+|                                |              |
+
+
+
+
+
+** Tags
+Org mode의 Tags는 특정 heading를 분류하고 검색할 수 있는 기능이다. Tags를 활용하면 효율적으로 데이터를 관리하고 필요한 정보를 빠르게 찾을 수 있다. 하위 heading의 태그는 상위 heading의 태그를 상속받는다.
+
+문서 내에 사용된 태그를 자동으로 수집하여 Tags 리스트로 구성하려면 빈 '#+TAGS:'를 사용한다.
+
+/Mutually Esclusive/
+서로 베타적인 태그를 만들려면 '{}'를 사용해서 다음과 같이 설정할 수 있다.
+'#+TAGS: {work(w) home(h)} personal(p)'
+Emacs 설정에서 org-tag-alist에서 ':startgroup'과 ':endgroup'으로 동일한 설정을 할 수 있다.
+
+/Group Tags/
+Tags는 계층구조를 가질 수 있다. group tag는 ':startgrouptag', 'grouptags'와 'endgrouptag' 키워드로 설정할 수 있다. 베타적인 group tag를 만들려면 ':startgroup', 'endgroup'를 사용한다.
+
+/Tag Searches/
+'+tag1+tag2': tag1과 tag2가 포함된 항목 검색.
+'tag1|tag2': tag1 또는 tag2가 포함된 항목 검색.
+'-tag1': tag1를 포함하지 않는 항목 검색.
+
+현재 내가 사용하고 있는 태그 구조는 다음과 같다.
+
+- Reading
+- Learning
+- GTD
+
+
+
+| DESCRIPTION                    | KEYBIDING |
+|--------------------------------+-----------|
+| Enter tags for the heading     | C-c C-q   |
+| Enter tags when point headding | C-c C-c   |
+| Search tags                    | C-c / m   |
+|                                |           |
+
+M-x org-agenda m (org-tags-view)
+Create a global list of tag matches from all agenda files. See Matching tags and properties.
+
+M-x org-agenda M (org-tags-view)
+Create a global list of tag matches from all agenda files, but check only TODO items.
+
+** Property
+Org Mode의 Properties는 특정 Heading에 메타데이터를 추가하여 체계적으로 관리할 수 있게 해주는 기능이다. Properties는 key-value 쌍으로 저장된다. Org Mode에는 몇 가지 기본 Key가 있으며 사용자가 직접 정의할 수도 있다. Key는 대소문자를 구분하지 않는다. 가독성을 위해 첫글자만 대문자로 작성하기로 한다.
+
+#+begin_src
+:PROPERTIES:
+:Title:  Sugar
+:Artist: Maroon5
+:END:
+#+end_src
+
+기본적으로 Properties는 부모 Heading에서 자식 Heading으로 상속된다. 'org-use-property-inheritance' 변수로 설정할 수 있다
+
+https://orgmode.org/manual/Property-Syntax.html
+
+
+M-x org-agenda m (org-tags-view)
+Create a global list of tag/property matches from all agenda files.
+
+M-x org-agenda M (org-tags-view)
+Create a global list of tag matches from all agenda files, but check only TODO items.
+
+/Column View/
+https://orgmode.org/manual/Column-attributes.html
+Column View는 Org Mode의 데이터를 표 형태로 시각적으로 보여주는 기능이다.
+
+Column View는 특정 Heading, 파일, 또는 전역으로 설정할 수 있다.
+- Heading
+  'COLUMNS' property를 추가하면 된다.
+- File
+  'COLUMNS' Property drawer를 사용하여 문서 전체에 적용할 수 있다.
+
+
+
+
+| DESCRIPTION     | KEYBIDING   |
+|-----------------+-------------|
+| Add Properties  | C-c C-x p   |
+| Search property | C-c / m     |
+| Column view     | C-c C-x C-c |
+|                 |             |
+
+
+
+** Date and Times
+Org Mode에서 시간 그리고 날짜와 관련된 내용을 정리하였다.
+
+*** Timestamp
+시간과 날짜 정보를 포함하고 있는 문자열을 timestamp라고 한다. Timestamp는 Org Agenda에서 일정 및 작업을 관리하는 핵심 도구로 사용한다. Org Mode에서는 timestamp를 created, last changed 등 보다 더 많은 범위에 사용한다.
+
+Timestamps는 '<>'를 사용해서 표시한다. 아래 설명에서 '<>'를 생략해서 표시했다. 기본적인 timestamp는 다음과 같다.
+'2006-11-01 Wed 19:15'
+Timestamp에 repeater interval를 설정할 수 있다. N의 간격으로 시간(h), days(d), weeks(w), months(m), 또는 years(y)을 설정할 수 있다.
+'2006-11-11 Wed 12:30 +1w'
+Diary-style expression entries. Calendat package를 사용해서 diary style를 설정할 수 있다.:
+'%%(diary-float t 4 2) 22:00-23:00'
+시간과 날짜 간격을 설정할 수 있다. 시간 간격은 '-'로 시간을 연결하여 설정할 수 있다.:
+'2001-11-11 Thu 10:00-12:00'
+두 Timestamp를 '--'로 연결하여 시간/날짜 범위를 설정할 수 있다.
+'2001-01-01 Mon'--'2001-01-03'
+'2001-01-01 Mon 10:00-11:00'--'2001-01-03 10:00-11:00'
+Inactive timestamp, agenda에 사용되지 않는 Timestamp는 '[]'로 감싸서 표시할 수 있다.
+'[2024-12-25]'
+
+/DEADLINE/
+DEADLINE를 통해 작업의 마감일을 설정할 수 있다. 해당 날짜에 작업이 Agenda에 표시되며, 미리 경고하거나 마감일 초과 시 경고 메시지를 표시한다. 기본적으로 3일 전에 경고를 표시하도록 설정했다. 개별적으로 경고 날짜를 설정하려면 DEADLINE의 Timestamp에 '-4d'처럼 설정 할 수 있다.
+'DEADLINE: 2001-01-01 -4d'
+
+/SCHEDULED/
+SCHEDULED를 통해 작업을 시작할 예정일을 설정할 수 있다. 해당 날짜에 작업이 Agenda에 완료될 때까지 표시된다.
+'SCHEDULED: 2001-11-11'
+항목을 특정 기간 후 표시하려면 '-3d' 또는 '--3d'를 사용한다. 작업을 지연하면 Agenda에 해당 날짜 후에 표시된다. 반복자 '+1w'등을 추가하여 반복적으로 설정할 수 있다.
+'SCHEDULED: 2001-11-11 -3d'
+'SCHEDULED: 2001-11-11 +3d'
+
+| DESCRIPTION               | KEYBIDING    |
+|---------------------------+--------------|
+| Insert timestamp          | C-c .        |
+| Insert inactive timestamp | C-c !        |
+| Change date by one day    | S-LEFT/RIGHT |
+| Change time               | S-UP/DOWN    |
+| insert DEADLINE           |              |
+| insert SCHEDULED          |              |
+| Search Timestamp          | C-c / d      |
+
+*** Clocking
+:LOGBOOK:
+CLOCK: [2024-12-25 Wed 20:10]
+:END:
+Clocking Work Time은 작업 시간 기록과 관리를 하기 위한 Org Mode의 기능이다. 특정 작업에 소요된 시간을 추적하고, 로그를 남기며, 분석할 수 있다.
+
+/Clocking/
+Clocking을 시작하면 'CLOCK' 키워드가 Timestamp와 함께 추가된다. 만약 중복으로 clocking 했으면 'LOGBOOK'에 여러개의 CLOCK이 추가된다. Clocking이 작동 중일 경우, modeline에 Clocking time이 표시된다. Clock를 중단하면 timestamp에 중단 시간이 추가되고 간격이 추가된다.
+
+To save the clock history across Emacs sessions, use:
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
+
+/Clock Table/
+https://chatgpt.com/g/g-p-675cba21fa908191938ab8df2ec1e460-emacs/c/675cba7e-065c-800b-9212-f34cd1484573
+
+/Idle/
+Idle는 Emacs에서 사용자가 입력 활동을 멈추고 아무 동작도 하지 않을 때의 상태를 의미한다. Idle 상태에 진입한 후 돌아왔을 때 Idle 시간 처리 방법을 묻는 메시지가 표시된다. 이때 다음 옵션이 제공되며 단축키로 동작을 할 수 있다.
+- k: Idle 시간을 유지한다. 몇 분을 유지할지 입력할 수 있다. 'RET'를 누르면 모든 시간을 유지한다.
+- K: Idle 시간을 유지하고 clock-out.
+- s: Idle 시간을 제거하고 현재 시간부터 clocking 재개한다.
+- S: Idle 시간을 제거하고 clock-out.
+- c: 현재 Clock를 삭제한다.
+
+/Effort Estimates/
+Effort Estimates는 작업에 소요될 시간을 추정하는 Org Mode의 기능이다. Clocking 시간과 비교하여 시간 관리를 하는데 도움을 준다.
+
+
+| DESCRIPTION            | KEYBIDING   |
+|------------------------+-------------|
+| clock-in               | C-c C-x C-i |
+| clock-out              | C-c C-x C-o |
+| Re-clock               | C-c C-x C-x |
+| Set effort             | C-c C-x e   |
+| Update effort          | C-c C-x C-e |
+| Cancel clock           | C-c C-x C-q |
+| Jump to clock line     | C-c C-x C-j |
+| Display time summaries | C-c C-x C-d |
+
+
+
+** File Control
+/Refile and copy/
+Refole은 Org Mode에서 특정 항목을 다른 같은 파일의 다른 위치로 이동하거나, 다른 Org 파일로 옮길 수 있다. 이때 해당 항목과 그 하위 항목이 함께 이동된다.
+
+/Archiving/
+Archive는 완료된 작업이나 더 이상 필요하지 않은 항목을 별도의 파일 또는 위치로 이동하여 메인 Org 파일을 깔끔하게 유지하는 데 사용하는 기능이다. Archive를 활용하면 중요한 작업만 메인 파일에 남겨두고, 기록이나 참조용으로 필요한 항목은 Archive 파일에서 관리할 수 있다.
+Archive는 Archive 파일 또는 현재 파일의 특정 섹션에 저장할 수 있다.
+
+
+
+
+
+| DESCRIPTION         | KEYBIDING   |
+|---------------------+-------------|
+| Refile the entry    | C-c C-w     |
+| Copy the entry      | C-c M-w     |
+| Archive the subtree | C-c C-x C-a |
+|                     |             |
+
+
+
+#+CAPTION: test
+#+NAME: fig:abc
+[[~/.dotfiles/Config/.config/wallpapers/wallhaven-space.png]]

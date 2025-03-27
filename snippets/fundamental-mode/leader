@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: leader
+# key: leader
+# --
+<leader> $0

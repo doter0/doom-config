@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: inline code syntax
+# key: ;ㅊ
+# --
+~$1~$0`(progn
+          (let ((original-input-method current-input-method))
+            (when current-input-method
+              (deactivate-input-method))
+            (add-hook 'yas-after-exit-snippet-hook
+                      (lambda ()
+                        (when original-input-method
+                          (activate-input-method original-input-method)))
+                      nil 'local))
+          nil)`

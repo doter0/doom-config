@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Third heading
+# key: ;3
+# condition: 'auto
+# --
+*** $1
+$0

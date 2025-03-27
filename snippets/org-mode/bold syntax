@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: bold syntax
+# key: ;b
+# condition: 'auto
+# --
+*$1*$0

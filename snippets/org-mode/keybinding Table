@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: keybinding Table
+# key: keytable
+# --
+
+| Keybind | Description |
+|---------+-------------|
+| $0
