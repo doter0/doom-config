@@ -14,8 +14,7 @@ sudo pacman -S emacs
 
 *** MacOS
 
-**
-
+** Part2: Install Doom Emacs
 #+BEGIN_SRC shell
 # Clone Doom Emacs
 rm -r ~/.emacs.d
